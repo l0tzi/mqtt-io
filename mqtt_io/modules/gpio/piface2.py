@@ -38,7 +38,7 @@ class GPIO(GenericGPIO):
     def get_pin(self, pin: PinType) -> bool:
         c = 0
         for i in range(5):
-            if bool(self.io.digital_read_pin(pin)):
+            if bool(self.io.digital_read(pin)):
                 c = c + 1
         return c == 5
 
