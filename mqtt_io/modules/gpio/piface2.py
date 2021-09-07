@@ -36,7 +36,11 @@ class GPIO(GenericGPIO):
         self.io.digital_write(pin, value)
 
     def get_pin(self, pin: PinType) -> bool:
-        return bool(self.io.digital_read(pin))
+        c = 0
+        for i in range(5):
+            if bool(self.io.digital_read_pin(pin)):
+                c = c + 1
+        return c == 5
 
     def cleanup(self) -> None:
         self.io.deinit()
